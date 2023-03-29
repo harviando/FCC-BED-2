@@ -14,6 +14,9 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/views/index.html");
 });
 
+// intercepting the get response with /public folder content addition
+app.use("/public", express.static(__dirname + "/public"));
+
 
 
 
