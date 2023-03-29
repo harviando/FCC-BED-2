@@ -17,7 +17,12 @@ app.get("/", function(req, res) {
 // intercepting the get response with /public folder content addition
 app.use("/public", express.static(__dirname + "/public"));
 
-
+//API to respond with a message when /json is acessed
+app.get("/json", (req, res) => {
+    res.json({
+      message: "Hello json"
+    });
+});
 
 
 
