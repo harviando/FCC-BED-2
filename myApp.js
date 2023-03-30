@@ -5,14 +5,9 @@ require('dotenv').config();
 
 console.log("Hello World!");
 
-// /** Serve "Hello Express String Whenever User request root or "/" " */
-// app.get("/", (req, res)=>{
-//     res.send("Hello Express");
-// });
-
 //installing middleware on the root
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.path} ${req.ip}`);
+app.use(function(req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip);
     next()
 });
 
