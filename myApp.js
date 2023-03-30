@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 let express = require('express');
 let app = express();
 require('dotenv').config();
@@ -9,6 +10,11 @@ console.log("Hello World!");
 //     res.send("Hello Express");
 // });
 
+//installing middleware on the root
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path} ${req.ip}`);
+    next()
+});
 
 // Responding to a request with sending a index file
 app.get("/", function(req, res) {
@@ -31,6 +37,7 @@ app.get("/json", function(req, res) {
         });
     }
 });
+
 
 
 
