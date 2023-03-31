@@ -11,6 +11,19 @@ app.use(function(req, res, next) {
     next()
 });
 
+//installing middleware for time fetching
+const middleware = (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+};
+
+//testing time request using middleware that handle time
+app.get("/now", middleware, (req, res) => {
+    res.send({
+      time: req.time
+    });
+});
+
 // Responding to a request with sending a index file
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/views/index.html");
